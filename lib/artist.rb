@@ -2,6 +2,8 @@ require 'pry'
 
 class Artist
 
+  extend Concerns::ClassMethods
+
   attr_accessor :name, :songs
 
   @@all = []
