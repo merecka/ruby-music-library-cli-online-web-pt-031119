@@ -1,6 +1,6 @@
 module Concerns
 
-  module ClassMethods
+  module Findable
 
 
     def find_by_name(obj_name)
