@@ -35,13 +35,9 @@ class Artist
   end
 
   def genres
-  #  binding.pry
     genres_arry = []
-    self.songs.collect do |x|
-      genres_arry << x.genre
-    end
-    binding.pry
-    genres_arry.uniq!
+    self.songs.collect{|x| genres_arry << x.genre}
+    genres_arry.uniq
   end
 
 end

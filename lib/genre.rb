@@ -31,4 +31,10 @@ class Genre
     new_genre
   end
 
+  def artists
+    artists_arry = []
+    self.songs.collect{|x| artists_arry << x.artist}
+    artists_arry.uniq
+  end
+
 end
