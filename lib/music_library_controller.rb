@@ -32,4 +32,61 @@ class MusicLibraryController
     end
   end
 
+  def list_artists
+    sorted_artists = Artist.all.sort_by {|artist| artist.name}
+
+    sorted_artists.each_with_index do |x, index|
+      puts "#{index+1}. #{x.name}"
+    end
+  end
+
+  def list_genres
+    sorted_genres = Genre.all.sort_by {|genre| genre.name}
+
+    sorted_genres.each_with_index do |x, index|
+      puts "#{index+1}. #{x.name}"
+    end
+  end
+
+  def list_songs_by_artist
+    puts "Please enter the name of an artist:"
+    response = gets
+    sorted_songs = Song.all.sort_by {|song| song.name}
+    counter = 0
+    sorted_songs.each do |x|
+      if x.artist.name == response
+        counter += 1
+        puts "#{counter}. #{x.name} - #{x.genre.name}"
+      end
+    end
+  end
+
+  def list_songs_by_genre
+    puts "Please enter the name of a genre:"
+    response = gets
+    sorted_songs = Song.all.sort_by {|song| song.name}
+    counter = 0
+    sorted_songs.each do |x|
+      if x.genre.name == response
+        counter += 1
+        puts "#{counter}. #{x.artist.name} - #{x.name}"
+      end
+    end
+  end
+
+  def play_song
+    puts "Which song number would you like to play?"
+    response = gets
+    response = response.to_i
+      if response > 0 && response <= Song.all.size
+        sorted_songs = Song.all.sort_by {|song| song.name }
+        sorted_songs.each_with_index do |x, index|
+          if response == index+1
+           puts "Playing #{x.name} by #{x.artist.name}"
+          end
+        end
+      end
+  end
+
+
 end
