@@ -20,7 +20,9 @@ class MusicLibraryController
 
     response = nil
     until response == "exit"
-      response = gets
+      response = gets.chomp
+      response
+    #  binding.pry
         if response == "list songs"
           list_songs
         elsif response == "list artists"
@@ -63,7 +65,7 @@ class MusicLibraryController
 
   def list_songs_by_artist
     puts "Please enter the name of an artist:"
-    response = gets
+    response = gets.chomp
     sorted_songs = Song.all.sort_by {|song| song.name}
     counter = 0
     sorted_songs.each do |x|
@@ -76,7 +78,7 @@ class MusicLibraryController
 
   def list_songs_by_genre
     puts "Please enter the name of a genre:"
-    response = gets
+    response = gets.chomp
     sorted_songs = Song.all.sort_by {|song| song.name}
     counter = 0
     sorted_songs.each do |x|
