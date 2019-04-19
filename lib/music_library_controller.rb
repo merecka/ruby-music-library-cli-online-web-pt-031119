@@ -24,4 +24,22 @@ class MusicLibraryController
     end
   end
 
+  def list_songs
+    binding.pry
+    artist_names = []
+    song_names = []
+    genres =[]
+    binding.pry
+    Song.all.each_with_index do |x, index|
+      artist_names << x.artist.name
+      song_names << x.name
+      genres << x.genre.name
+      puts "#{index+1}. #{x.artist.name} - #{x.name} - #{x.genre.name}"
+      #expect($stdout).to receive(:puts).with("1. Thundercat - For Love I Come - dance")
+    #binding.pry
+    end
+  end
+
+
+
 end
