@@ -66,8 +66,7 @@ class Song
     artist_name = file_name_array[0].strip  #removes leading & trailing white spaces from artist name
     song_name = file_name_array[1].strip  #removes leading & trailing white spaces from song name
     genre_name = file_name_array[2].strip  #removes leading & trailing white spaces from genre name
-    new_song = self.new(song_name)
-    new_song.save
+    new_song = create(song_name)
     new_song.artist = Artist.find_or_create_by_name(artist_name)
     new_song.artist.add_song(new_song)
     new_song.genre = Genre.find_or_create_by_name(genre_name)

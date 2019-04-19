@@ -13,7 +13,7 @@ class MusicImporter
 
   def import
     self.files.collect do |x|
-      Song.new_from_filename(x)
+      Song.create_from_filename(x)
     end
   end
 
