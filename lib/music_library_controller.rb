@@ -21,6 +21,19 @@ class MusicLibraryController
     response = nil
     until response == "exit"
       response = gets
+        if response == "list songs"
+          list_songs
+        elsif response == "list artists"
+          list_artists
+        elsif response == "list genres"
+           list_genres
+        elsif response == "list artist"
+           list_songs_by_artist
+        elsif response == "list genre"
+           list_songs_by_genre
+        elsif response == "play song"
+           play_song
+        end
     end
   end
 
@@ -86,6 +99,10 @@ class MusicLibraryController
           end
         end
       end
+  end
+
+  def list songs
+    # list_songs
   end
 
 
