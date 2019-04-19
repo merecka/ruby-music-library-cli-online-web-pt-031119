@@ -1,6 +1,6 @@
 class Song
 
-  attr_accessor :name, :genre
+  attr_accessor :name, :file_name
 
   @@all = []
 
@@ -58,6 +58,26 @@ class Song
 
   def self.find_or_create_by_name(song_name)
     find_by_name(song_name) ? find_by_name(song_name) : create(song_name)
+  end
+
+  def self.new_from_filename(file_name)
+    file_name_split = file_name.split(/(.mp3)\z/) #removes the mp3 from the string
+    file_name_array = file_name_split[0].split("-") #separates the .mp3 from the artist name, song name, and genre as three separate strings in an array
+    artist_name = file_name_array[0].strip  #removes leading & trailing white spaces from artist name
+    song_name = file_name_array[1].strip  #removes leading & trailing white spaces from song name
+    genre_name = file_name_array[2].strip  #removes leading & trailing white spaces from genre name
+    new_song = self.new(song_name)
+    new_song.save
+    new_song.artist = Artist.find_or_create_by_name(artist_name)
+    new_song.artist.add_song(new_song)
+    new_song.genre = Genre.find_or_create_by_name(genre_name)
+    new_song.genre.add_song(new_song)
+    new_song
+  end
+
+  def self.create_from_filename(file_name)
+  #  binding.pry
+    new_from_filename(file_name)
   end
 
 end
