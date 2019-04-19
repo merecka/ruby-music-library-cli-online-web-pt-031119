@@ -62,7 +62,7 @@ class Song
 
   def self.new_from_filename(file_name)
     file_name_split = file_name.split(/(.mp3)\z/) #removes the mp3 from the string
-    file_name_array = file_name_split[0].split("-") #separates the .mp3 from the artist name, song name, and genre as three separate strings in an array
+    file_name_array = file_name_split[0].split(" - ") #separates the .mp3 from the artist name, song name, and genre as three separate strings in an array
     artist_name = file_name_array[0].strip  #removes leading & trailing white spaces from artist name
     song_name = file_name_array[1].strip  #removes leading & trailing white spaces from song name
     genre_name = file_name_array[2].strip  #removes leading & trailing white spaces from genre name

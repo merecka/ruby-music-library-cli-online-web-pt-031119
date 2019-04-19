@@ -25,21 +25,21 @@ class MusicLibraryController
   end
 
   def list_songs
-    binding.pry
+  #  binding.pry
     artist_names = []
     song_names = []
     genres =[]
-    binding.pry
-    Song.all.each_with_index do |x, index|
-      artist_names << x.artist.name
-      song_names << x.name
-      genres << x.genre.name
-      puts "#{index+1}. #{x.artist.name} - #{x.name} - #{x.genre.name}"
+#    binding.pry
+    sorted_songs = Song.all.sort_by {|song| song.name }
+
+    sorted_songs.each_with_index do |x, index|
+      # artist_names << x.artist.name
+      # song_names << x.name
+      # genres << x.genre.name
+       puts "#{index+1}. #{x.artist.name} - #{x.name} - #{x.genre.name}"
       #expect($stdout).to receive(:puts).with("1. Thundercat - For Love I Come - dance")
     #binding.pry
     end
   end
-
-
 
 end
