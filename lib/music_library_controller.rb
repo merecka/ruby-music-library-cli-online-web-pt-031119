@@ -101,9 +101,4 @@ class MusicLibraryController
       end
   end
 
-  def list songs
-    # list_songs
-  end
-
-
 end
